@@ -12,7 +12,7 @@ public class Championship {
     @GeneratedValue
     private Long id;
 
-    private String championshipName;
+    private String name;
 
     private String description;
 

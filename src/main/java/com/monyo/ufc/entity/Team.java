@@ -12,7 +12,7 @@ public class Team {
     @GeneratedValue
     private Long id;
 
-    private String teamName;
+    private String name;
 
     @OneToOne
     private Coach coach;
