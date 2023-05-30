@@ -3,8 +3,6 @@ package com.monyo.ufc.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.Set;
-
 @Entity
 @Data
 public class Fight {
@@ -12,9 +10,17 @@ public class Fight {
     @GeneratedValue
     private Long id;
 
-    @OneToMany(mappedBy = "fight")
-    private Set<Fighter> fighter2;
-
     @ManyToOne
     private Championship championship;
+
+    @ManyToOne
+    private Fighter fighter1;
+
+    @ManyToOne
+    private Fighter fighter2;
+
+    @ManyToOne
+    private Fighter winner;
+
+    private String method;
 }

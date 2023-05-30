@@ -14,6 +14,6 @@ public class Coach {
 
     private String lastName;
 
-    @ManyToOne
+    @OneToOne
     private Team team;
 }

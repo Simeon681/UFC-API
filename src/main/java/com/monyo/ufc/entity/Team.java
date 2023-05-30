@@ -3,7 +3,7 @@ package com.monyo.ufc.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Data
@@ -14,12 +14,9 @@ public class Team {
 
     private String teamName;
 
-    @OneToMany(mappedBy = "team")
-    private Set<Coach> coaches;
+    @OneToOne
+    private Coach coach;
 
-    @OneToMany(mappedBy = "team")
-    private Set<Fighter> fighters;
-
-    @ManyToOne
-    private Championship championships;
+    @OneToMany
+    private List<Fighter> fighters;
 }

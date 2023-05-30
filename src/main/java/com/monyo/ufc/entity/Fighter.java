@@ -26,12 +26,9 @@ public class Fighter {
 
     private int draws;
 
-    @Enumerated(EnumType.ORDINAL)
+    @ManyToOne
     private Category category;
 
     @ManyToOne
     private Team team;
-
-    @ManyToOne
-    private Fight fight;
 }
