@@ -15,7 +15,5 @@ public interface ChampionshipService {
 
     ChampionshipResource update(ChampionshipResource championshipResource, long id);
 
-    Optional<Championship> getChampionshipByName(String name);
-
     void delete(long id);
 }

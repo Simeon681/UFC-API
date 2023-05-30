@@ -15,7 +15,5 @@ public interface CoachService {
 
     CoachResource update(CoachResource coachResource, long id);
 
-    Optional<Coach> getCoachByName(String name);
-
     void delete(long id);
 }

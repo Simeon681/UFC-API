@@ -15,7 +15,5 @@ public interface TeamService {
 
     TeamResource update(TeamResource teamResource, long id);
 
-    Optional<Team> getTeamByName(String name);
-
     void delete(long id);
 }

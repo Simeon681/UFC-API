@@ -15,7 +15,5 @@ public interface FightService {
 
     FightResource update(FightResource fightResource, long id);
 
-    Optional<Fight> getFightByName(String name);
-
     void delete(long id);
 }
