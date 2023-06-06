@@ -31,6 +31,13 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
+    public CategoryResource save(CategoryResource resource) {
+        Category category = CATEGORY_MAPPER.fromCategoryResource(resource);
+
+        return CATEGORY_MAPPER.toCategoryResource(categoryRepository.save(category));
+    }
+
+    @Override
     public CategoryResource update(CategoryResource categoryResource, long id) {
         Category toUpdate = categoryRepository.getReferenceById(id);
         toUpdate.setName(categoryResource.getName());

@@ -11,6 +11,8 @@ public interface CategoryService {
 
     CategoryResource getById(long id);
 
+    CategoryResource save(CategoryResource resource);
+
     CategoryResource update(CategoryResource categoryResource, long id);
 
     Optional<Category> getCategoryByName(String name);
