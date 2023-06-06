@@ -1,6 +1,7 @@
 package com.monyo.ufc.service.impl;
 
 import com.monyo.ufc.controller.resources.FightResource;
+import com.monyo.ufc.controller.resources.FighterResource;
 import com.monyo.ufc.entity.Fight;
 import com.monyo.ufc.repository.FightRepository;
 import com.monyo.ufc.service.FightService;
@@ -27,8 +28,8 @@ public class FightServiceImpl implements FightService {
     }
 
     @Override
-    public FightResource save(FightResource fight) {
-        Fight fight1 = FIGHT_MAPPER.fromFightResource(fight);
+    public FightResource save(FightResource resource) {
+        Fight fight1 = FIGHT_MAPPER.fromFightResource(resource);
         fight1.setChampionship(null);
         fight1.setWinner(null);
         fight1.setFighter1(null);

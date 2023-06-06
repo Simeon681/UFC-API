@@ -11,7 +11,9 @@ public interface FighterService {
 
     FighterResource getById(long id);
 
-    FighterResource update(FighterResource fighter);
+    FighterResource save(FighterResource resource);
+
+    FighterResource update(FighterResource fighterResource, long id);
 
     void delete(long id);
 }

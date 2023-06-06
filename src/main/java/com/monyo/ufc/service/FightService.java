@@ -1,10 +1,9 @@
 package com.monyo.ufc.service;
 
 import com.monyo.ufc.controller.resources.FightResource;
-import com.monyo.ufc.entity.Fight;
+import com.monyo.ufc.controller.resources.FighterResource;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface FightService {
     List<FightResource> findAll();

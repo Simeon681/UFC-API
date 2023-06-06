@@ -2,7 +2,6 @@ package com.monyo.ufc.service.impl;
 
 import com.monyo.ufc.controller.resources.TeamResource;
 import com.monyo.ufc.entity.Team;
-import com.monyo.ufc.repository.FighterRepository;
 import com.monyo.ufc.repository.TeamRepository;
 import com.monyo.ufc.service.TeamService;
 import lombok.RequiredArgsConstructor;

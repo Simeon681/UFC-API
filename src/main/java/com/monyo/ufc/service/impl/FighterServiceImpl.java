@@ -30,17 +30,26 @@ public class FighterServiceImpl implements FighterService {
     }
 
     @Override
-    public FighterResource update(FighterResource fighter) {
-        Fighter fighter1 = FIGHTER_MAPPER.fromFighterResource(fighter);
-        categoryService.getCategoryByName(fighter1.getCategory().getName())
-                .ifPresentOrElse(
-                        fighter1::setCategory,
-                        () -> {
-                            throw new EntityNotFoundException("");
-                        }
-                );
+    public FighterResource save(FighterResource resource) {
+        Fighter fighter = FIGHTER_MAPPER.fromFighterResource(resource);
+        fighter.setCategory(null);
+        fighter.setTeam(null);
 
-        return FIGHTER_MAPPER.toFighterResource(fighterRepository.save(fighter1));
+        return FIGHTER_MAPPER.toFighterResource(fighterRepository.save(fighter));
+    }
+
+    @Override
+    public FighterResource update(FighterResource fighterResource, long id) {
+        Fighter toUpdate = fighterRepository.getReferenceById(id);
+        toUpdate.setName(fighterResource.getName());
+        toUpdate.setAge(fighterResource.getAge());
+        toUpdate.setHeight(fighterResource.getHeight());
+        toUpdate.setWeight(fighterResource.getWeight());
+        toUpdate.setWins(fighterResource.getWins());
+        toUpdate.setLosses(fighterResource.getLosses());
+        toUpdate.setDraws(fighterResource.getDraws());
+
+        return FIGHTER_MAPPER.toFighterResource(fighterRepository.save(toUpdate));
     }
 
     @Override

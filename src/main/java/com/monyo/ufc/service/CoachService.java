@@ -11,7 +11,7 @@ public interface CoachService {
 
     CoachResource getById(long id);
 
-    CoachResource save(CoachResource coach);
+    CoachResource save(CoachResource resource);
 
     CoachResource update(CoachResource coachResource, long id);
 

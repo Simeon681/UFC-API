@@ -28,11 +28,11 @@ public class CoachServiceImpl implements CoachService {
     }
 
     @Override
-    public CoachResource save(CoachResource coach) {
-        Coach coach1 = COACH_MAPPER.fromCoachResource(coach);
-        coach1.setTeam(null);
+    public CoachResource save(CoachResource resource) {
+        Coach coach = COACH_MAPPER.fromCoachResource(resource);
+        coach.setTeam(null);
 
-        return COACH_MAPPER.toCoachResource(coachRepository.save(coach1));
+        return COACH_MAPPER.toCoachResource(coachRepository.save(coach));
     }
 
     @Override
