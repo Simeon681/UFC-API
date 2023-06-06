@@ -1,6 +1,8 @@
 package com.monyo.ufc.service.impl;
 
 import com.monyo.ufc.controller.resources.TeamResource;
+import com.monyo.ufc.entity.Team;
+import com.monyo.ufc.repository.FighterRepository;
 import com.monyo.ufc.repository.TeamRepository;
 import com.monyo.ufc.service.TeamService;
 import lombok.RequiredArgsConstructor;
@@ -27,16 +29,23 @@ public class TeamServiceImpl implements TeamService {
 
     @Override
     public TeamResource save(TeamResource team) {
-        return null;
+        Team team1 = TEAM_MAPPER.fromTeamResource(team);
+        team1.setFighters(null);
+        team1.setCoach(null);
+
+        return TEAM_MAPPER.toTeamResource(teamRepository.save(team1));
     }
 
     @Override
     public TeamResource update(TeamResource teamResource, long id) {
-        return null;
+        Team toUpdate = teamRepository.getReferenceById(id);
+        toUpdate.setName(teamResource.getName());
+
+        return TEAM_MAPPER.toTeamResource(teamRepository.save(toUpdate));
     }
 
     @Override
     public void delete(long id) {
-
+        teamRepository.deleteById(id);
     }
 }

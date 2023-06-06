@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 import static com.monyo.ufc.mapper.CoachMapper.COACH_MAPPER;
 
@@ -29,16 +30,21 @@ public class CoachServiceImpl implements CoachService {
     @Override
     public CoachResource save(CoachResource coach) {
         Coach coach1 = COACH_MAPPER.fromCoachResource(coach);
-        return null;
+        coach1.setTeam(null);
+
+        return COACH_MAPPER.toCoachResource(coachRepository.save(coach1));
     }
 
     @Override
     public CoachResource update(CoachResource coachResource, long id) {
-        return null;
+        Coach toUpdate = coachRepository.getReferenceById(id);
+        toUpdate.setName(coachResource.getName());
+
+        return COACH_MAPPER.toCoachResource(coachRepository.save(toUpdate));
     }
 
     @Override
     public void delete(long id) {
-
+        coachRepository.deleteById(id);
     }
 }

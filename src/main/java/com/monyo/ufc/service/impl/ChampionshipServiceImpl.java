@@ -1,6 +1,7 @@
 package com.monyo.ufc.service.impl;
 
 import com.monyo.ufc.controller.resources.ChampionshipResource;
+import com.monyo.ufc.entity.Championship;
 import com.monyo.ufc.repository.ChampionshipRepository;
 import com.monyo.ufc.service.ChampionshipService;
 import lombok.RequiredArgsConstructor;
@@ -27,16 +28,24 @@ public class ChampionshipServiceImpl implements ChampionshipService {
 
     @Override
     public ChampionshipResource save(ChampionshipResource championship) {
-        return null;
+        Championship championship1 = CHAMPIONSHIP_MAPPER.fromChampionshipResource(championship);
+        championship1.setFights(null);
+        championship1.setTeams(null);
+
+        return CHAMPIONSHIP_MAPPER.toChampionshipResource(championshipRepository.save(championship1));
     }
 
     @Override
     public ChampionshipResource update(ChampionshipResource championshipResource, long id) {
-        return null;
+        Championship toUpdate = championshipRepository.getReferenceById(id);
+        toUpdate.setName(championshipResource.getName());
+        toUpdate.setDescription(championshipResource.getDescription());
+
+        return CHAMPIONSHIP_MAPPER.toChampionshipResource(championshipRepository.save(toUpdate));
     }
 
     @Override
     public void delete(long id) {
-
+        championshipRepository.deleteById(id);
     }
 }
